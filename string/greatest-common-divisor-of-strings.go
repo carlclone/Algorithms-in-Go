@@ -1,5 +1,7 @@
 package string
 
+//标签 #@string
+
 //For strings S and T, we say "T divides S" if and only if S = T + ... + T  (T concatenated with itself 1 or more times)
 //
 //Return the largest string X such that X divides str1 and X divides str2.
@@ -81,3 +83,6 @@ func gcdOfStrings(str1 string, str2 string) string {
 
 	}
 }
+
+//go的string处理 , 重看go 极客时间上的相关课程 , 当用下标取访问的时候 , 是用什么方式 ,  ascii码吗 底层是个 []uint8{}的数组 ?
+// 用range的时候底层是个[]unicode{}的数组

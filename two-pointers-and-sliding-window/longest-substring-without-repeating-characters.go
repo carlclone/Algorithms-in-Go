@@ -1,5 +1,7 @@
 package two_pointers_and_sliding_window
 
+//标签 #@string
+
 //Given a string, find the length of the longest substring without repeating characters.
 //
 //Example 1:
@@ -19,12 +21,6 @@ package two_pointers_and_sliding_window
 //Explanation: The answer is "wke", with the length of 3.
 //             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-//重写 , 尝试用discuss中一篇文章中的滑动窗口通用框架
-//https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/Sliding-Window-algorithm-template-to-solve-all-the-Leetcode-substring-search-problem.
-func lengthOfLongestSubstring2(s string) int {
-
-}
-
 //参考刘宇波老师的写法
 func lengthOfLongestSubstring1(s string) int {
 	//定义[i,j]窗口
@@ -39,7 +35,7 @@ func lengthOfLongestSubstring1(s string) int {
 	//j+1是重复的,i移动到重复字符index+1的位置,j++ , 维护map , 维护maxWindow      j++不能超过len-1 , index+1不能超过len-1
 
 	//情况2优化 , 只移动 index+1 , 则变成情况1 , 在下次循环的时候处理
-	//上面的优化也bug , 没有维护map , 改为l每次+1 , 并且每次都把l所在的元素从map中-1
+	//上面的优化有bug , 没有维护map , 改为l每次+1 , 并且每次都把l所在的元素从map中-1
 
 	maxWindow, l, r := 0, 0, -1
 	freq := [256]int{}
