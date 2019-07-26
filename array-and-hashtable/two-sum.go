@@ -1,4 +1,4 @@
-package array
+package array_and_hashtable
 
 func twoSum1(nums []int, target int) []int {
 	numMap := make(map[int]int)
