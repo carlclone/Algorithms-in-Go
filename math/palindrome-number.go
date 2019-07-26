@@ -20,7 +20,7 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
 
 //第一种,直接反转后比较
-func isPalindrome(x int) bool {
+func isPalindrome1(x int) bool {
 	if x < 0 {
 		return false
 	}
@@ -35,7 +35,7 @@ func isPalindrome(x int) bool {
 }
 
 //第二种,反转一半
-func isPalindrome(x int) bool {
+func isPalindrome2(x int) bool {
 	if x < 0 || (x != 0 && x%10 == 0) { //排除负数和 10, 100 (最低位 0 怎么左移都是 0 , 无法参与下面的判断)
 		return false
 	}

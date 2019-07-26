@@ -79,12 +79,6 @@ func lengthOfLongestSubstring(s string) int {
 				delete(curWmap, s[orij])
 			}
 			curWmap[s[k]] = k
-			//sub:=curWmap[s[k]]
-			//curWsize=curWsize - (sub-j)
-			//orij:=j
-			//curWmap[s[k]] = j
-			//j=sub+1
-			//
 		}
 	}
 	return max
