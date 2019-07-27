@@ -11,13 +11,10 @@ package dynamic_programming
 //
 //If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 
-func maxSubArray(nums []int) int {
+func maxSubArray1(nums []int) int {
 	maxCurr := nums[0]
 	currSubArrVal := nums[0]
 	for i := 1; i < len(nums); i++ {
-		//fmt.Println(maxCurr)
-		//fmt.Println(currSubArrVal)
-
 		if currSubArrVal >= 0 && nums[i] >= 0 {
 			maxCurr = max(maxCurr, currSubArrVal+nums[i])
 			currSubArrVal = maxCurr
@@ -27,6 +24,17 @@ func maxSubArray(nums []int) int {
 		}
 	}
 	return maxCurr
+}
+
+func maxSubArray2(nums []int) int {
+	maxSoFar := nums[0]
+	maxEndingHere := nums[0]
+	for i := 1; i < len(nums); i++ {
+		maxEndingHere = max(maxEndingHere+nums[i], nums[i])
+		maxSoFar = max(maxSoFar, maxEndingHere)
+	}
+	return maxSoFar
+
 }
 
 func max(a, b int) int {
