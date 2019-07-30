@@ -1,5 +1,7 @@
 package two_pointers_and_sliding_window
 
+import "../utils"
+
 //标签 #@string
 
 //Given a string, find the length of the longest substring without repeating characters.
@@ -44,7 +46,7 @@ func lengthOfLongestSubstring1(s string) int {
 		if r+1 < len(s) && freq[s[r+1]] == 0 {
 			r++
 			freq[s[r]]++
-			maxWindow = maxc(maxWindow, r-l+1)
+			maxWindow = Maxc(maxWindow, r-l+1)
 		} else {
 			freq[s[l]]--
 			l++
@@ -69,7 +71,7 @@ func lengthOfLongestSubstring(s string) int {
 		if _, ok := curWmap[s[k]]; !ok {
 			curWmap[s[k]] = k
 			curWsize++
-			max = maxc(curWsize, max)
+			max = utils.Maxc(curWsize, max)
 		} else {
 			curWsize++
 			orij := j
