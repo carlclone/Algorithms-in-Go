@@ -19,3 +19,7 @@ func (s *StackNode) Pop() (n *TreeNode) {
 	s.pos--
 	return s.data[s.pos]
 }
+
+//stack implementation in go slice
+type SliceStack struct {
+}
