@@ -12,3 +12,25 @@ package array_and_hashtable
 //
 //Input: [2,2,1,1,1,2,2]
 //Output: 2
+
+func majorityElement(nums []int) int {
+	var (
+		freqMap  map[int]int
+		majority int
+		maxFreq  int
+		num      int
+		freq     int
+	)
+	freqMap = make(map[int]int)
+
+	for _, num = range nums {
+		freqMap[num]++
+	}
+	for num, freq = range freqMap {
+		if freq > maxFreq {
+			maxFreq = freq
+			majority = num
+		}
+	}
+	return majority
+}
