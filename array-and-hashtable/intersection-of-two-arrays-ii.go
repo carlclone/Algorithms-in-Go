@@ -21,16 +21,21 @@ package array_and_hashtable
 //What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
 
 func intersect(nums1 []int, nums2 []int) []int {
-	freq := make(map[int]int)
-	res := []int{}
-	for _, v := range nums1 {
-		freq[v]++
+	var (
+		freqMap      map[int]int
+		intersectArr []int
+		num          int
+	)
+	freqMap = make(map[int]int)
+
+	for _, num = range nums1 {
+		freqMap[num]++
 	}
-	for _, v := range nums2 {
-		if freq[v] > 0 {
-			res = append(res, v)
-			freq[v]--
+	for _, num = range nums2 {
+		if freqMap[num] > 0 {
+			intersectArr = append(intersectArr, num)
+			freqMap[num]--
 		}
 	}
-	return res
+	return intersectArr
 }
