@@ -18,4 +18,30 @@ package dynamic_programming
 //Output: 0
 //Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
-//TODO;
+func maxProfit(prices []int) int {
+	var (
+		leftMinIndexArr []int
+		price           int
+		index           int
+		maxProfit       int
+	)
+	leftMinIndexArr = make([]int, len(prices))
+	for index, price = range prices {
+		if index == 0 {
+			leftMinIndexArr[index] = price
+			continue
+		}
+		if price > leftMinIndexArr[index-1] {
+			leftMinIndexArr[index] = leftMinIndexArr[index-1]
+		} else {
+			leftMinIndexArr[index] = price
+		}
+	}
+
+	for index, price = range prices {
+		if price-leftMinIndexArr[index] > maxProfit {
+			maxProfit = price - leftMinIndexArr[index]
+		}
+	}
+	return maxProfit
+}

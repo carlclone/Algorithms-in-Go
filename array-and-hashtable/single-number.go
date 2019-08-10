@@ -18,5 +18,19 @@ Output: 4
 */
 
 func singleNumber(nums []int) int {
+	var (
+		freqMap map[int]int
+		num     int
+		freq    int
+	)
+	freqMap = make(map[int]int)
+	for _, num = range nums {
+		freqMap[num]++
+	}
+	for num, freq = range freqMap {
+		if freq == 1 {
+			return num
+		}
+	}
 
 }
