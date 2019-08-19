@@ -65,14 +65,16 @@ func inorderTraversalStack(root *TreeNode) (res []int) {
 
 	for len(stack) != 0 {
 		command = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
 		if command.Type == "go" {
 			pop = command.Val
-			if pop.Left != nil {
-				stack = append(stack, &Command{Type: "go", Val: pop.Left})
-			}
-			stack = append(stack, &Command{Type: "print", Val: pop})
 			if pop.Right != nil {
 				stack = append(stack, &Command{Type: "go", Val: pop.Right})
+			}
+
+			stack = append(stack, &Command{Type: "print", Val: pop})
+			if pop.Left != nil {
+				stack = append(stack, &Command{Type: "go", Val: pop.Left})
 			}
 		}
 		if command.Type == "print" {
