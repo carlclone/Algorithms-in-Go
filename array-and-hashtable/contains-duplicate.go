@@ -38,16 +38,14 @@ func containsDuplicate(nums []int) bool {
 	var (
 		freqMap map[int]int
 		val     int
-		freq    int
 	)
 	freqMap = make(map[int]int)
 	for _, val = range nums {
 		freqMap[val]++
-	}
-	for val, freq = range freqMap {
-		if freq > 1 {
+		if freqMap[val] > 1 {
 			return true
 		}
 	}
+
 	return false
 }
