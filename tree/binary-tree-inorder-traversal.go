@@ -24,20 +24,24 @@ Follow up: Recursive solution is trivial, could you do it iteratively?
  *     Right *TreeNode
  * }
  */
+
+// using recursion
 func inorderTraversal(root *TreeNode) []int {
-	res := []int{}
+	var (
+		res []int
+	)
 
-	in(&res, root)
-
+	inorder(&res, root)
 	return res
 }
 
-func in(res *[]int, root *TreeNode) {
-	if root == nil {
+func inorder(res *[]int, node *TreeNode) {
+	if node == nil {
 		return
 	}
-
-	in(res, root.Left)
-	*res = append(*res, root.Val)
-	in(res, root.Right)
+	inorder(res, node.Left)
+	*res = append(*res, node.Val)
+	inorder(res, node.Right)
 }
+
+//using stack emulation
