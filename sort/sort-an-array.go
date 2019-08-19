@@ -34,6 +34,32 @@ func sortArray(nums []int) []int {
 	return nums
 }
 
+//bubble optimization
+func sortArrayBubble(nums []int) []int {
+	var (
+		endIndex     int
+		index        int
+		iterateCount int
+		tmp          int
+	)
+	endIndex = len(nums) - 1
+
+	if endIndex == 0 {
+		return nums
+	}
+
+	for index = 0; iterateCount <= endIndex; iterateCount++ {
+		for ; index <= endIndex-iterateCount-1; index++ {
+			if nums[index] > nums[index+1] {
+				tmp = nums[index]
+				nums[index] = nums[index+1]
+				nums[index+1] = tmp
+			}
+		}
+	}
+	return nums
+}
+
 // select
 func sortArray(nums []int) []int {
 	n := len(nums) - 1
@@ -168,4 +194,9 @@ func partition(nums []int, start int, end int) int {
 
 	p = i
 	return p
+}
+
+//TODO; quick sort optimization
+func sortArrayQuick(nums []int) []int {
+
 }
