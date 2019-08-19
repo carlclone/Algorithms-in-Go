@@ -133,7 +133,7 @@ func sortArray(nums []int) []int {
 	return nums
 }
 func quickSort(nums []int, start int, end int) {
-	if start >= end {
+	if start >= end { //warning
 		return
 	}
 
@@ -160,7 +160,7 @@ func partition(nums []int, start int, end int) int {
 			swap(nums, yellowEnd+1, whiteStart)
 			whiteStart++
 			yellowEnd++
-		} else if nums[whiteStart] >= pivot {
+		} else if nums[whiteStart] >= pivot { //warning <= , not <
 			whiteStart++
 		}
 	}
