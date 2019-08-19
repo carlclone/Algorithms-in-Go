@@ -44,4 +44,40 @@ func inorder(res *[]int, node *TreeNode) {
 	inorder(res, node.Right)
 }
 
+type Command struct {
+	Type string
+	Val  *TreeNode
+}
+
 //using stack emulation
+func inorderTraversalStack(root *TreeNode) (res []int) {
+	var (
+		stack   []*Command // print , go
+		pop     *TreeNode
+		command *Command
+	)
+
+	if root == nil {
+		return
+	}
+	command = &Command{Type: "go", Val: root}
+	stack = append(stack, command)
+
+	for len(stack) != 0 {
+		command = stack[len(stack)-1]
+		if command.Type == "go" {
+			pop = command.Val
+			if pop.Left != nil {
+				stack = append(stack, &Command{Type: "go", Val: pop.Left})
+			}
+			stack = append(stack, &Command{Type: "print", Val: pop})
+			if pop.Right != nil {
+				stack = append(stack, &Command{Type: "go", Val: pop.Right})
+			}
+		}
+		if command.Type == "print" {
+			res = append(res, command.Val.Val)
+		}
+	}
+	return
+}
