@@ -17,6 +17,7 @@ package array_and_hashtable
 //Input: [1,1,1,3,3,4,3,2,4,2]
 //Output: true
 
+// brute force
 func containsDuplicate1(nums []int) bool {
 	if len(nums) == 1 {
 		return false
@@ -32,4 +33,21 @@ func containsDuplicate1(nums []int) bool {
 	return false
 }
 
-//TODO;MAP
+//using map
+func containsDuplicate(nums []int) bool {
+	var (
+		freqMap map[int]int
+		val     int
+		freq    int
+	)
+	freqMap = make(map[int]int)
+	for _, val = range nums {
+		freqMap[val]++
+	}
+	for val, freq = range freqMap {
+		if freq > 1 {
+			return true
+		}
+	}
+	return false
+}
