@@ -18,3 +18,7 @@ package dynamic_programming
 func integerBreak(n int) int {
 
 }
+
+func breakInteger() {
+
+}
