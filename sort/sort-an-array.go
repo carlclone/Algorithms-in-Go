@@ -159,7 +159,7 @@ func sortArray(nums []int) []int {
 	return nums
 }
 func quickSort(nums []int, start int, end int) {
-	if start >= end {
+	if start >= end { //warning
 		return
 	}
 
@@ -169,31 +169,36 @@ func quickSort(nums []int, start int, end int) {
 }
 
 func partition(nums []int, start int, end int) int {
-	p := start
-	j := start + 1
-	i := start
-
-	v := nums[p]
-
-	for j <= end {
-		if nums[j] < v {
-			tmp1 := nums[j]
-			nums[j] = nums[i+1]
-			nums[i+1] = tmp1
-
-			i++
-			j++
-		} else if nums[j] >= v {
-			j++
+	//           orange    yellowEnd             whiteStart
+	// [orange = pivot ][yellow < v][purple > v][white]
+	var (
+		orange     int
+		yellowEnd  int
+		whiteStart int
+		pivot      int
+	)
+	orange = start
+	yellowEnd = start
+	whiteStart = start + 1
+	pivot = nums[orange]
+	for whiteStart <= end {
+		if nums[whiteStart] < pivot {
+			swap(nums, yellowEnd+1, whiteStart)
+			whiteStart++
+			yellowEnd++
+		} else if nums[whiteStart] >= pivot { //warning <= , not <
+			whiteStart++
 		}
 	}
+	swap(nums, orange, yellowEnd)
+	return yellowEnd
+}
 
-	tmp2 := nums[i]
-	nums[i] = nums[p]
-	nums[p] = tmp2
+func swap(nums []int, index1 int, index2 int) {
+	tmp := nums[index1]
+	nums[index1] = nums[index2]
+	nums[index2] = tmp
 
-	p = i
-	return p
 }
 
 //TODO; quick sort optimization
