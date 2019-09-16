@@ -20,3 +20,8 @@ func hammingWeight(num int) int {
 	}
 	return res
 }
+
+func countBits(num int) []int {
+
+	// count[i] = count[ i & i-1 ] +1
+}
