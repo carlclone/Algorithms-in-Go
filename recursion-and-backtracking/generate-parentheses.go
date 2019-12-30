@@ -7,6 +7,7 @@ func generateParenthesis(n int) []string {
 }
 
 func gen(left int, right int, n int, list *[]string, result string) {
+	//这个判断把全部不符合的都排除掉了 , 简直了
 	if left < right {
 		return
 	}

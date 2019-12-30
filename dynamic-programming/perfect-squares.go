@@ -13,6 +13,7 @@ package dynamic_programming
 //Output: 2
 //Explanation: 13 = 4 + 9.
 
+//搜索问题 , BFS or DFS
 func numSquares(n int) int {
 	q := [][]int{}
 	vm := make(map[int]int)
