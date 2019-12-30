@@ -163,9 +163,28 @@ func quickSort(nums []int, start int, end int) {
 		return
 	}
 
-	p := partition(nums, start, end)
+	p := partition2(nums, start, end)
 	quickSort(nums, start, p-1)
 	quickSort(nums, p+1, end)
+}
+
+func partition2(nums []int, l int, r int) int {
+	var (
+		j, i int
+	)
+	// [l+1,j] <v , [j+1,i)>v
+
+	v := nums[l]
+	j = l
+	for i = l + 1; i <= r; i++ {
+		if nums[i] < v {
+			swap(nums, i, j)
+			j++
+		}
+
+	}
+	swap(nums, l, j)
+	return j
 }
 
 func partition(nums []int, start int, end int) int {
