@@ -178,7 +178,7 @@ func partition2(nums []int, l int, r int) int {
 	j = l
 	for i = l + 1; i <= r; i++ {
 		if nums[i] < v {
-			swap(nums, i, j)
+			swap(nums, i, j+1)
 			j++
 		}
 
