@@ -1,10 +1,17 @@
-package main
+package sort
+
+import "fmt"
 
 func main() {
 	s := [][]int{
+		{2, 1},
+		{1, 1},
+		{3, 2},
 		{1, 3},
+		{3, 1},
 		{1, 2},
 	}
+	fmt.Println(sortArray(s))
 }
 
 //quickSort
@@ -31,43 +38,20 @@ func partition2(nums [][]int, l int, r int) int {
 	v := nums[l]
 	j = l
 	for i = l + 1; i <= r; i++ {
-		if nums[i][0] < v[0] {
+		if nums[i][0] == v[0] {
 			if nums[i][1] > v[1] {
 				swap(nums, i, j+1)
 				j++
 			}
 
+		} else if nums[i][0] < v[0] {
+			swap(nums, i, j+1)
+			j++
 		}
 
 	}
 	swap(nums, l, j)
 	return j
-}
-
-func partition(nums []int, start int, end int) int {
-	//           orange    yellowEnd             whiteStart
-	// [orange = pivot ][yellow < v][purple > v][white]
-	var (
-		orange     int
-		yellowEnd  int
-		whiteStart int
-		pivot      int
-	)
-	orange = start
-	yellowEnd = start
-	whiteStart = start + 1
-	pivot = nums[orange]
-	for whiteStart <= end {
-		if nums[whiteStart] < pivot {
-			swap(nums, yellowEnd+1, whiteStart)
-			whiteStart++
-			yellowEnd++
-		} else if nums[whiteStart] >= pivot { //warning <= , not <
-			whiteStart++
-		}
-	}
-	swap(nums, orange, yellowEnd)
-	return yellowEnd
 }
 
 func swap(nums [][]int, index1 int, index2 int) {
