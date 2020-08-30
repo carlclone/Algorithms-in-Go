@@ -11,6 +11,7 @@ my implementations in go
 - [算法与数据结构-综合提升](https://coding.imooc.com/class/71.html)
 - [看得见的算法-可视化](https://coding.imooc.com/class/138.html)
 - [leetcode discuss](leetcode.com)
+- [剑指offer]
 
 # 趣味应用类算法
 
