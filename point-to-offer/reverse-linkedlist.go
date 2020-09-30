@@ -27,3 +27,4 @@ func reverseList(head *ListNode) *ListNode {
 //prev node
 //   prev node
 //     prev node
+//链表题,画图,指针,移动
