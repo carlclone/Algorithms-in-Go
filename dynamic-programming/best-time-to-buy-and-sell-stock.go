@@ -45,3 +45,38 @@ func maxProfit(prices []int) int {
 	}
 	return maxProfit
 }
+
+// 股票系列通用 DP 解法
+func maxProfit2(prices []int) int {
+	if len(prices) == 0 {
+		return 0
+	}
+
+	profit := make([][][]int, len(prices))
+	for k, _ := range profit {
+		profit[k] = make([][]int, 2)
+		for j, _ := range profit[k] {
+			profit[k][j] = make([]int, 2)
+		}
+	}
+	profit[0][0][0], profit[0][0][1] = 0, -prices[0]
+	profit[0][1][0], profit[0][1][1] = 0, 0
+
+	i := 1
+	for i < len(prices) {
+		profit[i][0][0] = profit[i-1][0][0]
+		profit[i][0][1] = max(profit[i-1][0][1], profit[i-1][0][0]-prices[i])
+
+		profit[i][1][0] = max(profit[i-1][1][0], profit[i-1][0][1]+prices[i])
+		i++
+	}
+	end := len(prices) - 1
+	return max(profit[end][0][0], profit[end][1][0])
+}
+
+func max(a int, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
