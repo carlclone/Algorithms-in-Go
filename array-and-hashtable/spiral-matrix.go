@@ -92,3 +92,47 @@ func spiralOrder(matrix [][]int) []int {
 
 	return res
 }
+
+// version 2
+
+func spiralOrder(matrix [][]int) []int {
+	if len(matrix) == 0 {
+		return []int{}
+	}
+	startRow, endRow := 0, len(matrix)-1
+	startCol, endCol := 0, len(matrix[0])-1
+
+	dir := 0
+	res := []int{}
+	for startRow <= endRow && startCol <= endCol {
+		switch dir {
+		case 0: //RIGHT
+			for col := startCol; col <= endCol; col++ {
+				res = append(res, matrix[startRow][col])
+			}
+			startRow++
+			break
+		case 1: //DOWN
+			for row := startRow; row <= endRow; row++ {
+				res = append(res, matrix[row][endCol])
+			}
+			endCol--
+			break
+		case 2: //LEFT
+			for col := endCol; col >= startCol; col-- {
+				res = append(res, matrix[endRow][col])
+			}
+			endRow--
+			break
+		case 3: //UP
+			for row := endRow; row >= startRow; row-- {
+				res = append(res, matrix[row][startCol])
+			}
+			startCol++
+			break
+
+		}
+		dir = (dir + 1) % 4
+	}
+	return res
+}
