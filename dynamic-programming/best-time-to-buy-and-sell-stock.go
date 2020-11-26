@@ -80,3 +80,22 @@ func max(a int, b int) int {
 	}
 	return b
 }
+
+// clear solution
+func maxProfit(prices []int) int {
+	// write code here
+	if len(prices) == 0 {
+		return 0
+	}
+	minPrice := prices[0]
+	maxPro := 0
+	for i := 1; i < len(prices); i++ {
+		if prices[i]-minPrice > maxPro {
+			maxPro = prices[i] - minPrice
+		}
+		if prices[i] < minPrice {
+			minPrice = prices[i]
+		}
+	}
+	return maxPro
+}
